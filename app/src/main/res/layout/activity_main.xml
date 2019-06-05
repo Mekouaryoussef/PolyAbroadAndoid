@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tabs"
+    <ImageView
+        android:id="@+id/logo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="203dp"
+        android:contentDescription="TODO"
+        app:srcCompat="@drawable/logo" />
 
-    </android.support.design.widget.TabLayout>
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="383dp"
+        android:text="@string/welcome_message" />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tabs">
-
-    </android.support.v4.view.ViewPager>
-
+    <Button
+        android:id="@+id/alertes_bttn"
+        android:layout_width="298dp"
+        android:layout_height="52dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="196dp"
+        android:layout_marginBottom="166dp"
+        android:text="@string/home_button" />
 </RelativeLayout>
