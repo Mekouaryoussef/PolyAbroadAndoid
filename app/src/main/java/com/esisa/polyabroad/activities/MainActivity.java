@@ -1,15 +1,13 @@
 package com.esisa.polyabroad.activities;
 
-import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.SearchView;
 
 import com.esisa.polyabroad.R;
 import com.esisa.polyabroad.adapters.FragmentAdapter;
-import com.esisa.polyabroad.fragments.Alertes;
+import com.esisa.polyabroad.fragments.AlertFragment;
 import com.esisa.polyabroad.fragments.HomeFragment;
 
 import org.eclipse.paho.android.service.MqttAndroidClient;
@@ -21,8 +19,7 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static MqttAndroidClient client;
-    private Bundle mState;
+    public MqttAndroidClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +27,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ViewPager vwPager;
-
-        if (savedInstanceState != null)
-            mState = savedInstanceState;
-
-        final Intent myIntent = getIntent();
-        if (savedInstanceState != null) {
-            //connectedProfile = savedInstanceState.getParcelable("currentProfile");
-        }
-
         vwPager = findViewById(R.id.container);
         setupViewPager(vwPager);
 
@@ -100,24 +88,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        // Save the state
-        //savedInstanceState.putParcelable("currentProfile", connectedProfile);
-        super.onSaveInstanceState(savedInstanceState);
-    }
-
     private void setupViewPager(ViewPager viewPager) {
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager());
 
         HomeFragment homeFragment = new HomeFragment();
-        if (mState != null) {
-            //connectedProfile = mState.getParcelable("currentProfile");
-        }
+        homeFragment.setClient(client);
         adapter.addFragment(homeFragment, "Home");
 
-        Alertes alertes = new Alertes();
-        adapter.addFragment(alertes, "Alertes");
+        AlertFragment alertFragment = new AlertFragment();
+        alertFragment.setClient(client);
+        adapter.addFragment(alertFragment, "Alert");
 
         viewPager.setAdapter(adapter);
     }
