@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout android:layout_width="match_parent"
+android:layout_height="wrap_content"
+xmlns:algolia="http://schemas.android.com/tools"
+android:layout_marginBottom="16dp"
+android:layout_marginTop="16dp"
+xmlns:android="http://schemas.android.com/apk/res/android">
+
+<ImageView
+    android:id="@+id/image"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginRight="12dp"
+    android:layout_marginEnd="12dp"
+    android:adjustViewBounds="true"
+    android:maxWidth="125dp"
+    algolia:attribute='@{"thumbnail"}'
+    android:src="@drawable/perso"/>
+
+
+
+
+<TextView
+    android:id="@+id/student"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignTop="@id/image"
+    android:layout_toRightOf="@id/image"
+    android:layout_toEndOf="@id/image"
+    android:ellipsize="end"
+    android:maxLines="3"
+    android:layout_marginBottom="18dp"
+    android:text="Emma LERASSE"
+    android:textColor="@android:color/black"
+    android:textSize="18sp"
+    algolia:attribute='@{"title"}'
+    algolia:highlightColor='@{@android:color/holo_orange_light}'
+    />
+
+
+<TextView
+    android:id="@+id/destination"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/student"
+    android:layout_toRightOf="@id/image"
+    android:layout_toEndOf="@id/image"
+    android:text="destination : "
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="7dp"/>
+
+<TextView
+    android:id="@+id/country"
+    android:text="Stockholm, Suède"
+    android:textSize="14dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignTop="@id/destination"
+    android:layout_toEndOf="@id/destination"
+    android:layout_toRightOf="@id/destination"
+    android:textAlignment="center"
+    android:layout_marginBottom="7dp"/>
+
+<TextView
+    android:id="@+id/university1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/destination"
+    android:layout_toRightOf="@id/image"
+    android:layout_toEndOf="@id/image"
+    android:ellipsize="end"
+    android:maxLines="1"
+    android:text="Université :"
+    android:layout_marginBottom="7dp"
+    />
+
+<TextView
+    android:id="@+id/university2"
+    android:text="Université de Stockholm"
+    android:textSize="14dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignTop="@id/university1"
+    android:layout_toEndOf="@id/university1"
+    android:layout_toRightOf="@id/university1"
+    android:textAlignment="center"
+    android:layout_marginLeft="5dp"
+    android:layout_marginBottom="7dp"/>
+
+    <TextView
+        android:id="@+id/review"
+        android:layout_width="235dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/university2"
+        android:layout_marginStart="-231dp"
+        android:layout_marginLeft="-231dp"
+        android:layout_marginTop="26dp"
+        android:layout_toEndOf="@id/university2"
+        android:layout_toRightOf="@id/university2"
+        android:text="Avis : " />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="@style/Base.Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@id/university1"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="35dp"
+        android:layout_toRightOf="@id/image"
+        android:numStars="5"
+        android:progressBackgroundTint="@android:color/darker_gray"
+        android:progressTint="@android:color/darker_gray"
+        android:secondaryProgressTint="@android:color/darker_gray"
+        android:stepSize="0.8"
+        algolia:attribute='@{"rating"}' />
+
+</RelativeLayout>
