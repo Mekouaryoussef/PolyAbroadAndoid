@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">PolyAbroad</string>
+    <string name="welcome_message">Bienvenue sur l\'application mobile Polyabroad !</string>
+    <string name="home_button">TRAITER LES AVIS</string>
+    <string name="avis">AVIS : </string>
+    <string name="notation">NOTE : </string>
+    <string name="student">ÉTUDIANT(E) : </string>
+    <string name="destination">DESTINATION : </string>
+    <string name="university">UNIVERSITÉ : </string>
 </resources>
