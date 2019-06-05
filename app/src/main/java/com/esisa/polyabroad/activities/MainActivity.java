@@ -12,8 +12,16 @@ import com.esisa.polyabroad.adapters.FragmentAdapter;
 import com.esisa.polyabroad.fragments.Alertes;
 import com.esisa.polyabroad.fragments.HomeFragment;
 
+import org.eclipse.paho.android.service.MqttAndroidClient;
+import org.eclipse.paho.client.mqttv3.IMqttActionListener;
+import org.eclipse.paho.client.mqttv3.IMqttToken;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
+
 public class MainActivity extends AppCompatActivity {
 
+    public static MqttAndroidClient client;
     private Bundle mState;
 
     @Override
@@ -36,6 +44,60 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(vwPager);
+
+        String clientId = MqttClient.generateClientId();
+        client = new MqttAndroidClient(this.getApplicationContext(), "tcp://localhost:1883",
+                clientId);
+
+        try {
+            IMqttToken token = client.connect();
+            token.setActionCallback(new IMqttActionListener() {
+                @Override
+                public void onSuccess(IMqttToken asyncActionToken) {
+                    // Connected
+
+                    //TO PUBLISH
+                    String topic = "/foo/bar";
+                    String payload = "the payload";
+                    try {
+                        MqttMessage message = new MqttMessage(payload.getBytes());
+                        message.setQos(2);
+                        message.setRetained(false);
+                        client.publish(topic, message);
+                    } catch (MqttException e) {
+                        e.printStackTrace();
+                    }
+
+                    //TO SUBSCRIBE
+                    try {
+                        IMqttToken subToken = client.subscribe(topic, 2);
+                        subToken.setActionCallback(new IMqttActionListener() {
+                            @Override
+                            public void onSuccess(IMqttToken asyncActionToken) {
+                                // The message was published
+                            }
+
+                            @Override
+                            public void onFailure(IMqttToken asyncActionToken,
+                                                  Throwable exception) {
+                                // The subscription could not be performed, maybe the user was not
+                                // authorized to subscribe on the specified topic e.g. using wildcards
+
+                            }
+                        });
+                    } catch (MqttException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+                    // Error
+                }
+            });
+        } catch (MqttException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
