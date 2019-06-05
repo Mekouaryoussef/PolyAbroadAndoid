@@ -7,4 +7,5 @@
     <string name="student">ÉTUDIANT(E) : </string>
     <string name="destination">DESTINATION : </string>
     <string name="university">UNIVERSITÉ : </string>
+    <string name="date">Publié le : </string>
 </resources>

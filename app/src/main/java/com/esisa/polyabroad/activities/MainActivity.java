@@ -1,14 +1,15 @@
 package com.esisa.polyabroad.activities;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.esisa.polyabroad.R;
 import com.esisa.polyabroad.adapters.FragmentAdapter;
 import com.esisa.polyabroad.fragments.AlertFragment;
 import com.esisa.polyabroad.fragments.HomeFragment;
+import com.esisa.polyabroad.fragments.ReviewsFragment;
 
 import org.eclipse.paho.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
@@ -91,13 +92,18 @@ public class MainActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager());
 
-        HomeFragment homeFragment = new HomeFragment();
-        homeFragment.setClient(client);
-        adapter.addFragment(homeFragment, "Home");
-
         AlertFragment alertFragment = new AlertFragment();
         alertFragment.setClient(client);
-        adapter.addFragment(alertFragment, "Alert");
+        adapter.addFragment(alertFragment, "Alertes");
+
+        HomeFragment homeFragment = new HomeFragment();
+        homeFragment.setClient(client);
+        adapter.addFragment(homeFragment, "Accueil");
+
+
+        ReviewsFragment reviewsFragment = new ReviewsFragment();
+        reviewsFragment.setClient(client);
+        adapter.addFragment(reviewsFragment, "Avis");
 
         viewPager.setAdapter(adapter);
     }

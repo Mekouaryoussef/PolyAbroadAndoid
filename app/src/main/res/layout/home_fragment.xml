@@ -22,13 +22,5 @@
         android:layout_centerInParent="true"
         android:text="@string/welcome_message" />
 
-    <Button
-        android:id="@+id/alertes_bttn"
-        android:layout_width="298dp"
-        android:layout_height="52dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="196dp"
-        android:layout_marginBottom="166dp"
-        android:text="@string/home_button" />
+
 </RelativeLayout>
