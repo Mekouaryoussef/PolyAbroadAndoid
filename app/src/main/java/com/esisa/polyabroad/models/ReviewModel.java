@@ -2,14 +2,14 @@ package com.esisa.polyabroad.models;
 
 public class ReviewModel {
 
-    private int id;
+    private String id;
     private String student;
     private String university;
     private double rate;
     private String review;
     private String destination;
 
-    public ReviewModel(int id, String student, String university, double rate, String review, String destination) {
+    public ReviewModel(String id, String student, String university, double rate, String review, String destination) {
         this.student = student;
         this.id = id;
         this.university = university;
@@ -18,7 +18,7 @@ public class ReviewModel {
         this.destination = destination;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

@@ -127,7 +127,8 @@ public class ReviewsFragment extends Fragment {
                         @Override
                         public void messageArrived(String topic, MqttMessage message) throws Exception {
                             JSONObject o = new JSONObject(message.toString());
-                            int id = o.getInt("id");
+                            System.out.println(o);
+                            String id = o.getString("id");
                             String student = o.getString("email");
                             String univ = o.getString("universityId");
                             String text = o.getString("Description");
@@ -170,6 +171,8 @@ public class ReviewsFragment extends Fragment {
             String json = gson.toJson(reviewModel);
             MqttMessage message = new MqttMessage(json.getBytes());
             client.publish(topic, message);
+            sendMajor();
+            getReview();
         } catch (MqttException e) {
             e.printStackTrace();
         }
@@ -182,6 +185,8 @@ public class ReviewsFragment extends Fragment {
             String json = gson.toJson(reviewModel);
             MqttMessage message = new MqttMessage(json.getBytes());
             client.publish(topic, message);
+            sendMajor();
+            getReview();
         } catch (MqttException e) {
             e.printStackTrace();
         }
