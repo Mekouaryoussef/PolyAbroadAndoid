@@ -16,95 +16,55 @@ import org.eclipse.paho.client.mqttv3.IMqttActionListener;
 import org.eclipse.paho.client.mqttv3.IMqttToken;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
-import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 public class MainActivity extends AppCompatActivity {
 
-    public MqttAndroidClient client;
+    private AlertFragment alertFragment = new AlertFragment();
+    private HomeFragment homeFragment = new HomeFragment();
+    private ReviewsFragment reviewsFragment = new ReviewsFragment();
+    private MqttAndroidClient client;
+    private TabLayout tabLayout;
+    private ViewPager vwPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        ViewPager vwPager;
         vwPager = findViewById(R.id.container);
-        setupViewPager(vwPager);
-
-        TabLayout tabLayout = findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(vwPager);
-
+        tabLayout = findViewById(R.id.tabs);
         String clientId = MqttClient.generateClientId();
         client = new MqttAndroidClient(this.getApplicationContext(), "tcp://localhost:1883",
                 clientId);
-
         try {
             IMqttToken token = client.connect();
             token.setActionCallback(new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {
                     // Connected
-
-                    //TO PUBLISH
-                    String topic = "/foo/bar";
-                    String payload = "the payload";
-                    try {
-                        MqttMessage message = new MqttMessage(payload.getBytes());
-                        message.setQos(2);
-                        message.setRetained(false);
-                        client.publish(topic, message);
-                    } catch (MqttException e) {
-                        e.printStackTrace();
-                    }
-
-                    //TO SUBSCRIBE
-                    try {
-                        IMqttToken subToken = client.subscribe(topic, 2);
-                        subToken.setActionCallback(new IMqttActionListener() {
-                            @Override
-                            public void onSuccess(IMqttToken asyncActionToken) {
-                                // The message was published
-                            }
-
-                            @Override
-                            public void onFailure(IMqttToken asyncActionToken,
-                                                  Throwable exception) {
-                                // The subscription could not be performed, maybe the user was not
-                                // authorized to subscribe on the specified topic e.g. using wildcards
-
-                            }
-                        });
-                    } catch (MqttException e) {
-                        e.printStackTrace();
-                    }
+                    homeFragment.setClient(client);
+                    alertFragment.setClient(client);
+                    reviewsFragment.setClient(client);
+                    setupViewPager(vwPager);
+                    tabLayout.setupWithViewPager(vwPager);
                 }
 
                 @Override
                 public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
                     // Error
+                    System.exit(0);
                 }
             });
         } catch (MqttException e) {
             e.printStackTrace();
         }
+
     }
 
     private void setupViewPager(ViewPager viewPager) {
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager());
-
-        AlertFragment alertFragment = new AlertFragment();
-        alertFragment.setClient(client);
-        adapter.addFragment(alertFragment, "Alertes");
-
-        HomeFragment homeFragment = new HomeFragment();
-        homeFragment.setClient(client);
         adapter.addFragment(homeFragment, "Accueil");
-
-
-        ReviewsFragment reviewsFragment = new ReviewsFragment();
-        reviewsFragment.setClient(client);
+        adapter.addFragment(alertFragment, "Alertes");
         adapter.addFragment(reviewsFragment, "Avis");
-
         viewPager.setAdapter(adapter);
     }
 
