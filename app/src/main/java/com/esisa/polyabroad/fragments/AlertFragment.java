@@ -69,7 +69,7 @@ public class AlertFragment extends Fragment {
                         spinnerChoice = "MAM";
                         break;
                     default:
-                        spinnerChoice = "BAT";
+                        spinnerChoice = "Filière";
                 }
                 sendMajor();
             }

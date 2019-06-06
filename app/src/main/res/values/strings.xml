@@ -7,7 +7,7 @@
     <string name="student">ÉTUDIANT(E) : </string>
     <string name="destination">DESTINATION : </string>
     <string name="university">UNIVERSITÉ : </string>
-    <string name="date">PUBLIÉ LE : </string>
+    <string name="date">LE : </string>
     <string name="delete">Supprimer</string>
     <string name="validate">Publier</string>
 
