@@ -90,13 +90,17 @@ public class ReviewsFragment extends Fragment {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rejectReview(review);
+                if (review != null) {
+                    rejectReview(review);
+                }
             }
         });
         validate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                acceptReview(review);
+                if (review != null) {
+                    acceptReview(review);
+                }
             }
         });
         return view;
@@ -128,18 +132,32 @@ public class ReviewsFragment extends Fragment {
 
                         @Override
                         public void messageArrived(String topic, MqttMessage message) throws Exception {
+
+                            review = null;
+                            nom.setText(null);
+                            university.setText(null);
+                            avis.setText(null);
+                            date.setText(null);
+
                             JSONObject o = new JSONObject(message.toString());
                             System.out.println(o);
                             String id = o.getString("id");
-                            String student = o.getString("email");
-                            String univ = o.getString("universityId");
+
+                            JSONObject profile = o.getJSONObject("profile");
+                            String student = profile.getString("firstName") + " " + profile.getString("lastName");
+
+                            JSONObject univ = o.getJSONObject("university");
+                            String nameUniv = univ.getString("name");
+
                             String text = o.getString("Description");
                             double rate = o.getDouble("Rate");
                             String date2 = o.getString("Date");
-                            //String destination = o.getString("destination");
-                            ReviewModel r = new ReviewModel(id, student, univ, rate, text, "bonjour", date2);
+                            String destination = univ.getString("city");
+
+                            ReviewModel r = new ReviewModel(id, student, nameUniv, rate, text, destination, date2);
+
                             review = r;
-                            System.out.println(review);
+
                             nom.setText(review.getStudent());
                             university.setText(review.getUniversity());
                             avis.setText(review.getReview());

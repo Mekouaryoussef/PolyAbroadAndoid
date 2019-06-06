@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -35,8 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/date" />
+                android:layout_marginTop="20dp" />
 
 
             <TextView
@@ -44,9 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/dates"
-                android:layout_marginLeft="20dp"
-
-                android:text="@string/student" />
+                android:layout_marginLeft="20dp" />
 
             <TextView
                 android:id="@+id/university"
@@ -54,8 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/nom"
                 android:layout_marginLeft="20dp"
-                android:gravity="left"
-                android:text="@string/university" />
+                android:gravity="left" />
 
             <TextView
                 android:id="@+id/avis"
@@ -64,9 +61,8 @@
                 android:layout_below="@id/university"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="left"
-                android:text="@string/avis" />
+                android:layout_marginBottom="20dp"
+                android:gravity="left" />
 
         </RelativeLayout>
 
@@ -74,11 +70,12 @@
     </android.support.v7.widget.CardView>
 
     <RelativeLayout
-        android:layout_width="294dp"
-        android:layout_height="91dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/card"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="0dp">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        tools:layout_height="wrap_content">
 
         <Button
             android:id="@+id/cancelButton"
