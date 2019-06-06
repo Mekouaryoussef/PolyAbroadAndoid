@@ -115,12 +115,13 @@ public class AlertFragment extends Fragment {
                             JSONArray jsonArray = new JSONArray(message.toString());
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject o = jsonArray.getJSONObject(i);
+                                int id = o.getInt("id");
                                 String student = o.getString("email");
                                 String university = o.getString("universityId");
                                 String text = o.getString("Description");
                                 double rate = o.getDouble("Rate");
                                 //String destination = o.getString("destination");
-                                ReviewModel review = new ReviewModel(student, university, rate, text, "bonjour");
+                                ReviewModel review = new ReviewModel(id, student, university, rate, text, "bonjour");
                                 list.add(review);
                             }
                             adapter.notifyDataSetChanged();
