@@ -26,6 +26,8 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.json.JSONObject;
 
+import java.time.format.DateTimeFormatter;
+
 public class ReviewsFragment extends Fragment {
     private MqttAndroidClient client;
     private View view;
@@ -133,13 +135,17 @@ public class ReviewsFragment extends Fragment {
                             String univ = o.getString("universityId");
                             String text = o.getString("Description");
                             double rate = o.getDouble("Rate");
+                            String date2 = o.getString("Date");
                             //String destination = o.getString("destination");
-                            ReviewModel r = new ReviewModel(id, student, univ, rate, text, "bonjour");
+                            ReviewModel r = new ReviewModel(id, student, univ, rate, text, "bonjour", date2);
                             review = r;
                             System.out.println(review);
                             nom.setText(review.getStudent());
                             university.setText(review.getUniversity());
                             avis.setText(review.getReview());
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+                            String formattedString = review.getDate().format(formatter);
+                            date.setText(formattedString);
                         }
 
                         @Override

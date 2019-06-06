@@ -1,6 +1,5 @@
 package com.esisa.polyabroad.adapters;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,15 +9,14 @@ import android.view.ViewGroup;
 import com.esisa.polyabroad.R;
 import com.esisa.polyabroad.models.ReviewModel;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class AlertRVAdapter extends RecyclerView.Adapter<AlertHolder> {
 
     private List<ReviewModel> reviewList;
-    private Context context;
 
-    public AlertRVAdapter(Context context, List<ReviewModel> reviewList) {
-        this.context = context;
+    public AlertRVAdapter(List<ReviewModel> reviewList) {
         this.reviewList = reviewList;
     }
 
@@ -39,6 +37,9 @@ public class AlertRVAdapter extends RecyclerView.Adapter<AlertHolder> {
         viewHolder.getUniversity().setText(review.getUniversity());
         viewHolder.getDestination().setText(review.getDestination());
         viewHolder.getRatingBar().setRating((float) review.getRate());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+        String formattedString = review.getDate().format(formatter);
+        viewHolder.getDates().setText(formattedString);
     }
 
     @Override

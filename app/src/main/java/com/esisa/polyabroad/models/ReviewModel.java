@@ -1,5 +1,10 @@
 package com.esisa.polyabroad.models;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+
 public class ReviewModel {
 
     private String id;
@@ -8,14 +13,21 @@ public class ReviewModel {
     private double rate;
     private String review;
     private String destination;
+    private LocalDateTime date;
 
-    public ReviewModel(String id, String student, String university, double rate, String review, String destination) {
+    public ReviewModel(String id, String student, String university, double rate, String review, String destination, String date) {
         this.student = student;
         this.id = id;
         this.university = university;
         this.rate = rate;
         this.review = review;
         this.destination = destination;
+        Instant instant = Instant.parse(date);
+        this.date = LocalDateTime.ofInstant(instant, ZoneId.of(ZoneOffset.UTC.getId()));
+    }
+
+    public LocalDateTime getDate() {
+        return date;
     }
 
     public String getId() {

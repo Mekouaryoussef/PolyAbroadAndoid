@@ -80,7 +80,7 @@ public class AlertFragment extends Fragment {
                 sendMajor();
             }
         });
-        adapter = new AlertRVAdapter(this.getContext(), list);
+        adapter = new AlertRVAdapter(list);
         recyclerView.setAdapter(adapter);
         return view;
     }
@@ -120,8 +120,10 @@ public class AlertFragment extends Fragment {
                                 String university = o.getString("universityId");
                                 String text = o.getString("Description");
                                 double rate = o.getDouble("Rate");
-                                ReviewModel review = new ReviewModel(id, student, university, rate, text, "bonjour");
-                                list.add(review);
+                                String date = o.getString("Date");
+                                //String destination = o.getString("destination");
+                                ReviewModel r = new ReviewModel(id, student, university, rate, text, "bonjour", date);
+                                list.add(r);
                             }
                             adapter.notifyDataSetChanged();
                         }

@@ -12,15 +12,20 @@ class AlertHolder extends RecyclerView.ViewHolder {
     private TextView student;
     private TextView destination;
     private TextView university;
+    private TextView dates;
     private RatingBar ratingBar;
 
     AlertHolder(@NonNull View itemView) {
         super(itemView);
+        dates = itemView.findViewById(R.id.dates);
         student = itemView.findViewById(R.id.student);
         destination = itemView.findViewById(R.id.destination);
         university = itemView.findViewById(R.id.university);
         ratingBar = itemView.findViewById(R.id.ratingBar);
+    }
 
+    TextView getDates() {
+        return dates;
     }
 
     TextView getStudent() {
@@ -34,7 +39,6 @@ class AlertHolder extends RecyclerView.ViewHolder {
     TextView getUniversity() {
         return university;
     }
-
 
     RatingBar getRatingBar() {
         return ratingBar;
