@@ -8,4 +8,9 @@
     <string name="destination">DESTINATION : </string>
     <string name="university">UNIVERSITÉ : </string>
     <string name="date">Publié le : </string>
+    <string-array name="spinner">
+        <item>BAT</item>
+        <item>SI</item>
+        <item>MAM</item>
+    </string-array>
 </resources>

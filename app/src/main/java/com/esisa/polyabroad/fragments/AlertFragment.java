@@ -24,7 +24,7 @@ public class AlertFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.alertes_items, container, false);
+        view = inflater.inflate(R.layout.alert_fragment, container, false);
         return view;
     }
 
