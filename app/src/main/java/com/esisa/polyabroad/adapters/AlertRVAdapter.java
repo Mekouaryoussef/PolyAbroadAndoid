@@ -38,7 +38,6 @@ public class AlertRVAdapter extends RecyclerView.Adapter<AlertHolder> {
         viewHolder.getStudent().setText(review.getStudent());
         viewHolder.getUniversity().setText(review.getUniversity());
         viewHolder.getDestination().setText(review.getDestination());
-        viewHolder.getReview().setText(review.getReview());
         viewHolder.getRatingBar().setRating((float) review.getRate());
     }
 
