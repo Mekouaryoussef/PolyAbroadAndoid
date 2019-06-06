@@ -7,10 +7,15 @@
     <string name="student">ÉTUDIANT(E) : </string>
     <string name="destination">DESTINATION : </string>
     <string name="university">UNIVERSITÉ : </string>
-    <string name="date">Publié le : </string>
+    <string name="date">PUBLIÉ LE : </string>
+    <string name="delete">Supprimer</string>
+    <string name="validate">Publier</string>
+
+
     <string-array name="spinner">
         <item>BAT</item>
         <item>SI</item>
         <item>MAM</item>
     </string-array>
+
 </resources>

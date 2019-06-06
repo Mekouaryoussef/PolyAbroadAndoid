@@ -1,99 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="320dp"
+    android:layout_height="130dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginBottom="15dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="4dp">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:algolia="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
-    android:layout_marginBottom="16dp">
-
-
-    <TextView
-        android:id="@+id/student"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:algolia="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
-        android:ellipsize="end"
-        android:maxLines="3"
-        android:text="@string/student"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        algolia:attribute='@{"title"}'
-        algolia:highlightColor='@{@android:color/holo_orange_light}' />
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
 
 
-    <TextView
-        android:id="@+id/destination"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/student"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="7dp"
-        android:text="@string/destination"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:visibility="visible" />
+        <TextView
+            android:id="@+id/student"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dates"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@string/student"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="15sp" />
 
 
-    <TextView
-        android:id="@+id/university"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/destination"
-        android:layout_marginTop="18dp"
-        android:layout_marginBottom="7dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="@string/university"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:visibility="visible" />
+        <TextView
+            android:id="@+id/destination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/student"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="0dp"
+            android:maxLines="1"
+            android:text="@string/destination"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="15sp"
+            android:visibility="visible" />
 
 
-    <TextView
-        android:id="@+id/review"
-        android:layout_width="235dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/university"
-        android:layout_marginStart="-80dp"
-        android:layout_marginLeft="-80dp"
-        android:layout_marginTop="74dp"
-        android:layout_toEndOf="@id/university"
-        android:layout_toRightOf="@id/university"
-        android:text="@string/avis"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:visibility="visible" />
-
-    <TextView
-        android:id="@+id/rating"
-        android:layout_width="235dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/university"
-        android:layout_marginStart="-81dp"
-        android:layout_marginLeft="-81dp"
-        android:layout_marginTop="36dp"
-        android:layout_toEndOf="@id/university"
-        android:layout_toRightOf="@id/university"
-        android:text="@string/notation"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:visibility="visible" />
+        <TextView
+            android:id="@+id/university"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/destination"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/university"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="15sp"
+            android:visibility="visible" />
 
 
-    <RatingBar
-        android:id="@+id/ratingBar"
-        style="@style/Base.Widget.AppCompat.RatingBar.Small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/dates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="-2dp"
+            android:layout_marginRight="301dp"
+            android:text="@string/date"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="15sp"
+            android:visibility="visible" />
 
-        android:layout_below="@id/university"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="15dp"
-        android:numStars="5"
-        android:progressBackgroundTint="@android:color/darker_gray"
-        android:progressTint="@android:color/darker_gray"
-        android:secondaryProgressTint="@android:color/darker_gray"
-        android:stepSize="0.8"
-        android:visibility="visible"
-        algolia:attribute='@{"rating"}' />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="235dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/university"
+            android:layout_marginStart="-88dp"
+            android:layout_marginLeft="-88dp"
+            android:layout_marginTop="22dp"
+            android:layout_toEndOf="@id/university"
+            android:layout_toRightOf="@id/university"
+            android:text="@string/notation"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="15sp"
+            android:visibility="visible" />
+
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="@style/Base.Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/university"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="5dp"
+            android:numStars="5"
+            android:progressBackgroundTint="@android:color/darker_gray"
+            android:progressTint="@android:color/darker_gray"
+            android:secondaryProgressTint="@android:color/darker_gray"
+            android:stepSize="0.8"
+            android:visibility="visible"
+            algolia:attribute='@{"rating"}' />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

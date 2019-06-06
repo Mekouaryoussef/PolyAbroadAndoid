@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <FrameLayout
         android:id="@+id/contain"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
 
         <LinearLayout
             android:layout_width="421dp"
-            android:layout_height="429dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!--<ImageView-->
-            <!--android:id="@+id/logo"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="186dp"-->
-            <!--app:srcCompat="@drawable/logo" />-->
 
             <TextView
                 android:layout_width="match_parent"
@@ -31,7 +25,7 @@
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="280dp"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="50dp">
 
@@ -41,9 +35,19 @@
 
 
                     <TextView
+                        android:id="@+id/dates"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-2dp"
+                        android:layout_marginRight="301dp"
+                        android:text="@string/date" />
+
+
+                    <TextView
                         android:id="@+id/nom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_below="@id/dates"
                         android:text="@string/student" />
 
                     <TextView
@@ -51,33 +55,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/nom"
-                        android:gravity="center"
+                        android:gravity="left"
                         android:text="@string/university" />
 
                     <TextView
                         android:id="@+id/avis"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_below="@id/university"
-                        android:gravity="center"
+                        android:gravity="left"
                         android:text="@string/avis" />
 
-                    <ImageView
-                        android:id="@+id/calendrier"
-                        android:layout_width="47dp"
-                        android:layout_height="18dp"
-                        android:layout_below="@id/avis"
-                        android:src="@drawable/calendar" />
-
-                    <TextView
-                        android:id="@+id/dates"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/avis"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginTop="-2dp"
-                        android:layout_marginRight="301dp"
-                        android:text="@string/date" />
                 </RelativeLayout>
 
 
@@ -90,18 +78,23 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
+                <Button
+                    android:id="@+id/cancelButton"
+                    style="@style/buttonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/red"
+                    android:text="@string/delete" />
 
-                <ImageButton
-                    android:layout_width="79dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ok"
-
-                    />
-
-                <ImageButton
-                    android:layout_width="79dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/notok" />
+                <Button
+                    android:id="@+id/add_dataButton"
+                    style="@style/buttonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_toEndOf="@id/cancelButton"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="@string/validate" />
 
 
             </LinearLayout>
