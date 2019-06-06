@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     reviewsFragment.setClient(client);
                     setupViewPager(vwPager);
                     tabLayout.setupWithViewPager(vwPager);
+                    vwPager.setCurrentItem(1);
                 }
 
                 @Override
@@ -62,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager());
-        adapter.addFragment(homeFragment, "Accueil");
         adapter.addFragment(alertFragment, "Alertes");
+        adapter.addFragment(homeFragment, "Accueil");
         adapter.addFragment(reviewsFragment, "Avis");
         viewPager.setAdapter(adapter);
     }
