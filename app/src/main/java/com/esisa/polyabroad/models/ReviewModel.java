@@ -14,16 +14,22 @@ public class ReviewModel {
     private String review;
     private String destination;
     private LocalDateTime date;
+    private String email;
 
-    public ReviewModel(String id, String student, String university, double rate, String review, String destination, String date) {
+    public ReviewModel(String id, String student, String email, String university, double rate, String review, String destination, String date) {
         this.student = student;
         this.id = id;
         this.university = university;
         this.rate = rate;
         this.review = review;
+        this.email = email;
         this.destination = destination;
         Instant instant = Instant.parse(date);
         this.date = LocalDateTime.ofInstant(instant, ZoneId.of(ZoneOffset.UTC.getId()));
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public LocalDateTime getDate() {

@@ -145,6 +145,7 @@ public class ReviewsFragment extends Fragment {
 
                             JSONObject profile = o.getJSONObject("profile");
                             String student = profile.getString("firstName") + " " + profile.getString("lastName");
+                            String email = profile.getString("email");
 
                             JSONObject univ = o.getJSONObject("university");
                             String nameUniv = univ.getString("name");
@@ -154,7 +155,7 @@ public class ReviewsFragment extends Fragment {
                             String date2 = o.getString("Date");
                             String destination = univ.getString("city");
 
-                            ReviewModel r = new ReviewModel(id, student, nameUniv, rate, text, destination, date2);
+                            ReviewModel r = new ReviewModel(id, student, email, nameUniv, rate, text, destination, date2);
 
                             review = r;
 

@@ -119,6 +119,7 @@ public class AlertFragment extends Fragment {
 
                                 JSONObject profile = o.getJSONObject("profile");
                                 String student = profile.getString("firstName") + " " + profile.getString("lastName");
+                                String email = profile.getString("email");
 
                                 JSONObject univ = o.getJSONObject("university");
                                 String nameUniv = univ.getString("name");
@@ -128,7 +129,7 @@ public class AlertFragment extends Fragment {
                                 String date = o.getString("Date");
                                 String destination = univ.getString("city");
 
-                                ReviewModel r = new ReviewModel(id, student, nameUniv, rate, text, destination, date);
+                                ReviewModel r = new ReviewModel(id, student, email, nameUniv, rate, text, destination, date);
                                 list.add(r);
                             }
                             adapter.notifyDataSetChanged();
